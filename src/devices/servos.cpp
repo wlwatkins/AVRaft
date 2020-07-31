@@ -3,8 +3,8 @@
 #include <LiquidCrystal_I2C.h>
 #include "structs.h"
 #include "main.h"
-#include "menus.h"
 #include "utils.h"
+#include "servos.h"
 
 
 void servoDevice(byte selectedMenuItem) {
@@ -116,30 +116,5 @@ void servoDevice(byte selectedMenuItem) {
         myservo.detach();
         
     }
-
-}
-
-
-
-void todoDevice(byte selectedMenuItem) {
- 
-  /* Cas spécial pour Dr Freeman */
-  switch (selectedMenuItem) {
-    case 0:
-      displayMenu(MAIN_MENU);
-  }
-
-}
-
-
-void loadDevice(byte selectedMenuItem) {
- 
-  /* Cas spécial pour Dr Freeman */
-  switch (selectedMenuItem) {
-    case 0:
-      displayMenu(SERVO_MENU);
-    default:
-      displayMenu(TODO_MENU);
-  }
 
 }

@@ -1,35 +1,35 @@
 #include "Arduino.h"
+#include <Servo.h>
+#include <LiquidCrystal_I2C.h>
 #include "structs.h"
 #include "main.h"
-#include "menus.h"
 #include "utils.h"
-
-void listenBtn(bool scroll, Button_t buttonPressed) {
-    if (!scroll){
-        while(readPushButton() != BP_NONE);
-    
-        /* Attend l'appui sur un bouton */
-        
-        while((buttonPressed = readPushButton()) == BP_NONE);
-
-        
-        /* Anti rebond pour le bouton */
-        delay(30);
-        
-        /* Attend le relâchement du bouton */
-        unsigned long start = millis();
-        while(readPushButton() != BP_NONE){
-            if (millis() - start > 500) {
-                scroll = true;
-                break;
-            }
-        };
+#include "servos.h"
 
 
 
-    } else if (readPushButton() == BP_NONE && scroll == true) {
-            scroll = false;
-    } else {
-        delay(50);
-    }
+
+
+
+void todoDevice(byte selectedMenuItem) {
+ 
+  /* Cas spécial pour Dr Freeman */
+  switch (selectedMenuItem) {
+    case 0:
+      displayMenu(MAIN_MENU);
+  }
+
+}
+
+
+void loadDevice(byte selectedMenuItem) {
+ 
+  /* Cas spécial pour Dr Freeman */
+  switch (selectedMenuItem) {
+    case 0:
+      displayMenu(SERVO_MENU);
+    default:
+      displayMenu(TODO_MENU);
+  }
+
 }

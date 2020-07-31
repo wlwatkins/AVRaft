@@ -5,8 +5,8 @@
 #include <Servo.h>
 #include "structs.h"
 #include "main.h"
-#include "menus.h"
-
+#include "utils.h"
+#include "servos.h"
  
 /* Objet LCD sur les broches utilisées par la shield LCD DFrobots */
 LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display

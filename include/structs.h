@@ -1,9 +1,5 @@
 #pragma once
 
-#ifndef _STRUCTS_H_
-#define _STRUCTS_H_
-/* Structure d'un menu */
-
 typedef struct {
   int min;
   int max;
@@ -27,9 +23,3 @@ typedef enum {
   BP_UP,     // Bouton haut
   BP_DOWN    // Bouton bas
 } Button_t;
-
-
-
-#endif /* _STRUCTS_H_ */
-
- 
