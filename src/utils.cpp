@@ -31,6 +31,8 @@ void loadDevice(byte selectedMenuItem) {
             usDevice(255) ;
         case 3:
             humidityDevice(255) ;
+        case 4:
+            onoffDevice(255) ;
         default:
             displayMenu(TODO_MENU);
     }

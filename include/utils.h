@@ -13,18 +13,19 @@ static const char* MAIN_MENU_ITEMS[] = {"Servo",
                                         "Stepper",  
                                         "Ultrasound",  
                                         "Humidity", 
-                                        "DC motor",  
-                                        "Relay",  
-                                        "Potentiometer",  
-                                        "Button", 
-                                        "LED",  
+                                        "On/Off ex: LED",
+                                        // "DC motor",  
+                                        // "Relay",  
+                                        // "Potentiometer",  
+                                        // "Button", 
+                                        // "LED",  
                                         " "};
 static int EMPTY_PARAMS[0];
 static Limits_t EMPTY_LIMITS[0];
 
 static Menu_t MAIN_MENU = {
   MAIN_MENU_ITEMS,
-  9,
+  6,
   EMPTY_PARAMS, 
   0,
   EMPTY_LIMITS,

@@ -13,6 +13,7 @@ The project is still in alpha and changes will acquire quite rapidly. The projec
   - Stepper
   - Ultrasonic 
   - Humidity
+  - On/Off
 
 Future integrations:
   - DC (H-bridge?)
@@ -117,6 +118,19 @@ Pins:
 | MEASURE | - | Start measuring.
 
 note: The sensor needs so time to stabilise. Also, the output is given in raw analog value as well as a mapped percentage.
+
+* ### On/Off (Toggle digital pin)
+Pins: 
+- IN1: D3
+
+| NAME | DEFAULT | DESCRIPTION |
+| ------ | ------ | ------ |
+| Delay | 500 | Delay (ms) between toggle of pin.
+| Cycle | 1 | Set if we toggle on and off in an infinite loop (1) or just change state of pin (0).
+| RUN | - | Start.
+
+note: This is a simple on/off switch which can be used to test LEDs, or relays, etc...
+
 
 ### Todos
 
