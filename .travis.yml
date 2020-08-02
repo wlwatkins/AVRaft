@@ -62,4 +62,4 @@ install:
     - platformio update
 
 script:
-    - platformio ci --lib="." --board=nano --board=uno
+    - platformio ci --lib="." --board=nanoatmega328
