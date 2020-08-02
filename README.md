@@ -110,8 +110,6 @@ Pins:
 Pins: 
 - IN1: A0
 
-"Dry V: ",  "Wet V: ", "MEASURE",  " {600,  250};
-
 | NAME | DEFAULT | DESCRIPTION |
 | ------ | ------ | ------ |
 | Dry V | 600 | Analog max value for dry condition (when sensor is in air).
