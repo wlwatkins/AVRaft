@@ -7,15 +7,16 @@
 AVRaft is a prototyping kit that gives makers a quick way to interact with alternators such as servos, stepper motors, ultrasonic sensor, etc... quickly withouth the need to take out your breadboard, and jumperwires.
 The project is still in alpha and changes will acquire quite rapidly. The project was written in C++ using platformio. 
 
-## Feature release!
+## Featured devices release!
 
-  - Servo motors
+  - Servo
+  - Stepper
+  - Ultrasonic 
+  - Humidity
 
 Future integrations:
-  - Stepper
   - DC (H-bridge?)
   - Relay
-  - Ultrasound
   - Potentiometer
   - Button
   - LED
@@ -52,6 +53,8 @@ To compile the code from source, you will need [platformio](https://platformio.o
 | LiquidCrystall_I2C | 1.1.4 | Frank de Brabander
 | Servo | 1.1.6 | Michael Margolis
 | Stepper | 1.1.3 | Arduino
+| NewPing | 1.9.1 | Tim Eckel
+
 
 You can then grab the project 
 `git clone git@github.com:willmendil/AVRaft.git`
@@ -93,6 +96,29 @@ Pins:
 
 note: Tested on 28BYJ-48, for other type of motors, need to do some testing.
 
+* ### Ultrasonic sensor (HC-SR04)
+Pins: 
+- Trigger: D3
+- Echo: D4
+
+| NAME | DEFAULT | DESCRIPTION |
+| ------ | ------ | ------ |
+| Max | 200 | Maximum distance to measure in cm.
+| MEASURE | - | Start measuring.
+
+* ### Humidity sensor (Capacitive Soil Moisture Sensor v1.2)
+Pins: 
+- IN1: A0
+
+"Dry V: ",  "Wet V: ", "MEASURE",  " {600,  250};
+
+| NAME | DEFAULT | DESCRIPTION |
+| ------ | ------ | ------ |
+| Dry V | 600 | Analog max value for dry condition (when sensor is in air).
+| Wet V | 250 | Analog min value for wet condition (when sensor is in water).
+| MEASURE | - | Start measuring.
+
+note: The sensor needs so time to stabilise. Also, the output is given in raw analog value as well as a mapped percentage.
 
 ### Todos
 

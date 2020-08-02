@@ -27,6 +27,10 @@ void loadDevice(byte selectedMenuItem) {
             servoDevice(255) ;
         case 1:
             stepperDevice(255) ;
+        case 2:
+            usDevice(255) ;
+        case 3:
+            humidityDevice(255) ;
         default:
             displayMenu(TODO_MENU);
     }

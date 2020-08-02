@@ -147,8 +147,14 @@ void setup() {
   lcd.createChar(CURSOR_UP, cursorUp);
   lcd.createChar(CURSOR_DOWN, cursorDown);
 
-  //Turning LCD backligth on
   lcd.backlight();
+
+  lcd.setCursor(0, 0);
+  lcd.print("AVRaft v0.1");
+  lcd.setCursor(0, 1);
+  lcd.print("   by willmendil");
+  //Turning LCD backligth on
+  delay(2500);
 
 }
  
