@@ -24,27 +24,6 @@
 # Template #1: General project. Test it using existing `platformio.ini`.
 #
 
-# language: python
-# python:
-#     - "2.7"
-#
-# sudo: false
-# cache:
-#     directories:
-#         - "~/.platformio"
-#
-# install:
-#     - pip install -U platformio
-#     - platformio update
-#
-# script:
-#     - platformio run
-
-
-#
-#Template #2: The project is intended to be used as a library with examples.
-
-
 language: python
 python:
     - "2.7"
@@ -54,12 +33,33 @@ cache:
     directories:
         - "~/.platformio"
 
-env:
-    - PLATFORMIO_CI_SRC=./src/main.cpp
-
 install:
     - pip install -U platformio
     - platformio update
 
 script:
-    - platformio ci --lib="./lib" --board=nanoatmega328
+    - platformio run
+
+
+#
+#Template #2: The project is intended to be used as a library with examples.
+
+
+# language: python
+# python:
+#     - "2.7"
+
+# sudo: false
+# cache:
+#     directories:
+#         - "~/.platformio"
+
+# env:
+#     - PLATFORMIO_CI_SRC=./src/main.cpp
+
+# install:
+#     - pip install -U platformio
+#     - platformio update
+
+# script:
+#     - platformio ci --lib="./lib/*" --board=nanoatmega328
