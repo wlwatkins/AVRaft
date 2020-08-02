@@ -83,6 +83,7 @@ void stepperDevice(byte selectedMenuItem) {
 
 
         digitalWrite(LED_BUILTIN, HIGH);
+        lcd.clear();
         lcd.setCursor(1, 0);
         lcd.print("CANCEL ANY KEY");
         lcd.setCursor(1, 1);

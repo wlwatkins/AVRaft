@@ -82,6 +82,7 @@ void servoDevice(byte selectedMenuItem) {
 
 
         digitalWrite(LED_BUILTIN, HIGH);
+        lcd.clear();
         lcd.setCursor(1, 1);
         lcd.print("<<< MOVING >>>");
 
