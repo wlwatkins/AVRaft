@@ -51,6 +51,7 @@ To compile the code from source, you will need [platformio](https://platformio.o
 | ------ | ------ | ------ |
 | LiquidCrystall_I2C | 1.1.4 | Frank de Brabander
 | Servo | 1.1.6 | Michael Margolis
+| Stepper | 1.1.3 | Arduino
 
 You can then grab the project 
 `git clone git@github.com:willmendil/AVRaft.git`
