@@ -78,12 +78,11 @@ The board supports a number of devices, each with their own parameters. The list
 
  - Make custom break out board
  - Add more devices
- - Add travis 
 
 License
 ----
 
-MIT
+TODO
 
 
 **Free Software, Hell Yeah!**
