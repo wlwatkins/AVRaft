@@ -25,7 +25,7 @@ static Limits_t EMPTY_LIMITS[0];
 
 static Menu_t MAIN_MENU = {
   MAIN_MENU_ITEMS,
-  6,
+  5,
   EMPTY_PARAMS, 
   0,
   EMPTY_LIMITS,

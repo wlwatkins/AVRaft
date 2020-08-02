@@ -34,15 +34,18 @@ This first version of the AVRaft uses of the shelf electronics:
 * [Toggle switch](https://www.ebay.fr/itm/5-x-Mini-Momentary-On-Off-On-Toggle-Switch-Car-Dash-Dashboard-Boat-SPDT-12V/262175715088?hash=item3d0ae3ef10:g:Q9EAAOSwePhZeyZS)
 * 9V battery
 * [Battery wire socket](https://www.ebay.fr/itm/Connecteur-piles-9-volts-9V-Battery-Snap-on-Connector-Clip-with-Wire-Holder/263047972777?hash=item3d3ee187a9:g:z6IAAOSwd~RZSXKE)
+* M2 and M3 screws
 
-Two 3D printed parts are required. 
-#TODO Add details on the printed parts
+Two 3D printed parts are required. You can find all the details on thingiverse https://www.thingiverse.com/thing:4559764
 
 ## Installation
 
 #### From binary
 A binary package is available to flash directly on the arduino. 
+
+```
 #todo add flash instruction
+```
 
 #### From source
 
@@ -134,7 +137,7 @@ note: This is a simple on/off switch which can be used to test LEDs, or relays, 
 
 ### Todos
 
- - Make custom break out board
+ - Make custom break out board (v2?)
  - Add more devices
 
 License
