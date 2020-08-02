@@ -82,7 +82,7 @@ The board supports a number of devices, each with their own parameters. The list
 License
 ----
 
-TODO
+GNU General Public License v3.0
 
 
 **Free Software, Hell Yeah!**
