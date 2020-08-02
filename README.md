@@ -65,13 +65,32 @@ To use this program, you will need to assemble the project and 3D print the encl
 The board supports a number of devices, each with their own parameters. The list of device should grow with time. 
 
 * ### Servo
+Pins: 
+- IN1: D3
+
 | NAME | DEFAULT | DESCRIPTION |
 | ------ | ------ | ------ |
 | Angle | 90 | Angle in degrees to which the servo will be set.
 | Delay | 5 | Delay in millisecond in for loop to move the servo (only when w/ rst is true).
 | w/ rst | 1 | Stands for "with reset", will move the servo to 0 and sweep to the give value, otherwise, the servo will just move to the value given in angle.
-| MOVE | - | Move the servo
+| MOVE | - | Move the servo to the given angle.
 
+* ### Stepper
+Pins: 
+- IN1: D3
+- IN2: D6
+- IN3: D5
+- IN4: D8
+
+| NAME | DEFAULT | DESCRIPTION |
+| ------ | ------ | ------ |
+| CW | 1 | Set if rotation clockwise (1) or anti clockwise (0).
+| Speed | 5 | Speed to move the motor (maximum value is 15 for 28BYJ-48).
+| Delay | 5 | Delay in millisecond between steps.
+| S/rev (not used) | 2048 | Number of steps per revolution. Small 28BYJ-48 is 2048. 
+| MOVE | - | Move the motor until a key is pressed.
+
+note: Tested on 28BYJ-48, for other type of motors, need to do some testing.
 
 
 ### Todos
