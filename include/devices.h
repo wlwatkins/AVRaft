@@ -5,3 +5,4 @@
 #include "devUltrasonic.h"
 #include "devHumidity.h"
 #include "devONOFF.h"
+#include "devDHTXX.h"
