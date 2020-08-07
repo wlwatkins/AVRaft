@@ -15,7 +15,7 @@ static const char* MAIN_MENU_ITEMS[] = {"Servo",
                                         "Humidity", 
                                         "On/Off",
                                         "DHTXX",  
-                                        // "Relay",  
+                                        "Analog",  
                                         // "Potentiometer",  
                                         // "Button", 
                                         // "LED",  
@@ -25,7 +25,7 @@ static Limits_t EMPTY_LIMITS[0];
 
 static Menu_t MAIN_MENU = {
   MAIN_MENU_ITEMS,
-  6,
+  7,
   EMPTY_PARAMS, 
   0,
   EMPTY_LIMITS,

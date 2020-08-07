@@ -15,10 +15,10 @@ The project is still in alpha and changes will acquire quite rapidly. The projec
   - Humidity
   - On/Off
   - DHT XX
+  - Analog
 
 Future integrations:
   - DC (H-bridge?)
-  - Potentiometer
   - Button
 
 ## 3D build and parts list
@@ -145,6 +145,20 @@ Pins:
 | MEASURE | - | Start.
 
 note: This will loop and print about once a second the temperature value in celsius and humidity in percent.
+
+
+* ### Analog
+Pins: 
+- IN1: A0
+
+| NAME | DEFAULT | DESCRIPTION |
+| ------ | ------ | ------ |
+| Max | 1015 | Sets the maximum value the actuator can reach
+| Min | 20 | Set the minimum value the actuator can reach
+| Inv | 0 | Inverse which is the max and min to calculate the percentage (in some case min is 100% (1) other cases it is max (0))
+| Measure | - | Start.
+
+note: This was tested with a photoresistor but it should work with any analog device (even the humidity sensor I guess...)
 
 
 ### Todos

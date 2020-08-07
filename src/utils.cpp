@@ -35,6 +35,8 @@ void loadDevice(byte selectedMenuItem) {
             onoffDevice(255) ;
         case 5:
             dhtxxDevice(255) ;
+        case 6:
+            analogDevice(255) ;
         default:
             displayMenu(TODO_MENU);
     }

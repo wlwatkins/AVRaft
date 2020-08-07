@@ -5,11 +5,11 @@
 #include "utils.h"
 #include "devices.h"
 
-void humidityDevice(byte selectedMenuItem) {
+void analogDevice(byte selectedMenuItem) {
     Button_t buttonPressed;      // Contient le bouton appuyé
     bool scroll = false;
 
-    Menu_t MENU = HUMIDITY_MENU;
+    Menu_t MENU = ANALOG_MENU;
 
  
     if (selectedMenuItem == 0){
@@ -85,31 +85,36 @@ void humidityDevice(byte selectedMenuItem) {
         lcd.print("CANCEL ANY KEY");
 
 
-        int soilMoistureValue;
-        int oldSoilMoistureValue = 0;
-        int soilmoisturepercent;
+        int value;
+        int oldValue = 0;
+        int pct;
 
         while ((buttonPressed = readPushButton()) == BP_NONE){
-            soilMoistureValue = analogRead(A0);  //put Sensor insert into soil
-            soilmoisturepercent = map(soilMoistureValue, MENU.params[0], MENU.params[1], 0, 100);
+            value = analogRead(A0);  //put Sensor insert into soil
+            if (MENU.params[2]) {
+                pct = map(value, MENU.params[0], MENU.params[1], 0, 100);    
+            }
+            else {
+                pct = map(value, MENU.params[1], MENU.params[0], 0, 100);
+            }
 
-            if (oldSoilMoistureValue != soilMoistureValue){
-                oldSoilMoistureValue = soilMoistureValue;
+            if (oldValue != value){
+                oldValue = value;
                 lcd.setCursor(0, 1);
                 lcd.print("V:               ");
                 lcd.setCursor(3, 1);
-                lcd.print(soilMoistureValue);
+                lcd.print(value);
 
-                if(soilmoisturepercent > 100) {
-                    soilmoisturepercent = 100;
+                if(pct > 100) {
+                    pct = 100;
                 }
-                else if(soilmoisturepercent <0){
-                    soilmoisturepercent = 0;
+                else if(pct <0){
+                    pct = 0;
                 }
 
                 lcd.setCursor(7, 1);
                 lcd.print("<=> ");
-                lcd.print(soilmoisturepercent);
+                lcd.print(pct);
                 lcd.print("%");
             }
             delay(100);
