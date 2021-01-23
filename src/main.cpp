@@ -7,9 +7,6 @@
 #include "utils.h"
 #include "devices.h"
 
-
-
-
 LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
 
 // Defining special characters for LCD
@@ -17,29 +14,34 @@ LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars
 #define CURSOR_UP 0x01
 #define CURSOR_DOWN 0x02
 
-// Defining pins for buttons
-#define BTN_SELECT 11
-#define BTN_UP 12
-#define BTN_DOWN 10
+// Creating hex array for each special characters
+uint8_t cursorRight[8]  = {0x00,0x08,0x04,0x02,0x04,0x08,0x00,0x00};
+uint8_t cursorUp[8] = {0x00,0x00,0x00,0x00,0x04,0x0E,0x1F,0x00};
+uint8_t cursorDown[8] = {0x00,0x1F,0x0E,0x04,0x00,0x00,0x00,0x00};
 
+uint8_t boxEmpty[8] = {0x1B,0x11,0x00,0x00,0x00,0x00,0x11,0x1B};
+uint8_t boxFill[8] = {0x1B,0x15,0x0E,0x1F,0x1F,0x0E,0x15,0x1B};
 
+// // Defining pins for buttons ENUM
+enum PinBTN {
+  PinBTN_DOWN = 10, PinBTN_SELECT, PinBTN_UP
+};
 
+/* Listes des touches de la shield lcd DFrobots */
+typedef enum {
+  BP_NONE,   // Aucun bouton appuyé
+  BP_DOWN,     // Bouton bas
+  BP_SELECT, // Bouton SELECT
+  BP_UP,     // Bouton haut
+} Button_t;
 
 // readPushButton reads which button is pressed and returns the enum.
 // If no button is pressed, it returns BP_NONE.
 Button_t readPushButton(void) {
-
-  if (digitalRead(BTN_DOWN)){
-      return BP_DOWN;
-  }else if (digitalRead(BTN_SELECT)){
-      return BP_SELECT;
-  }else if (digitalRead(BTN_UP)){
-      return BP_UP;
-  }else
-  {
-      return BP_NONE;
-  }
-  
+  if (digitalRead(PinBTN_DOWN)) {return BP_DOWN;}
+  else if (digitalRead(PinBTN_SELECT)) {return BP_SELECT;}
+  else if (digitalRead(PinBTN_UP)) {return BP_UP;}
+  else {return BP_NONE;}
 }
  
 // displayMenu prints the menu parsed in argument to the LCD screen.
@@ -134,11 +136,6 @@ void setup() {
   pinMode(BTN_SELECT, INPUT);
   pinMode(BTN_UP, INPUT);
   pinMode(BTN_DOWN, INPUT);
-
-  // Creating hex array for each special characters
-  uint8_t cursorRight[8]  = {0x00,0x08,0x04,0x02,0x04,0x08,0x00,0x00};
-  uint8_t cursorUp[8] = {0x00,0x00,0x00,0x00,0x04,0x0E,0x1F,0x00};
-  uint8_t cursorDown[8] = {0x00,0x1F,0x0E,0x04,0x00,0x00,0x00,0x00};
 
   lcd.init();  // initialize the lcd 
 

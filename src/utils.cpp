@@ -7,9 +7,6 @@
 #include "devices.h"
 
 
-
-
-
 void todoDevice(byte selectedMenuItem) {
  
   switch (selectedMenuItem) {

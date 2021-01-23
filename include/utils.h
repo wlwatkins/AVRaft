@@ -1,12 +1,7 @@
 #pragma once
 
-
-
 void todoDevice(byte selectedMenuItem);
-
 void loadDevice(byte selectedMenuItem) ;
-
-
 
 /* Menu principal */
 static const char* MAIN_MENU_ITEMS[] = {"Servo",  
