@@ -2,8 +2,7 @@
 #include <Servo.h>
 #include <LiquidCrystal_I2C.h>
 #include "structs.h"
-#include "main.h"
-#include "utils.h"
+#include "display.h"
 #include "devices.h"
 
 // SERVO MOTOR

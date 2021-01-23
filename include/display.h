@@ -1,7 +1,19 @@
 #pragma once
 
+
+// Defining special characters for LCD
+#define CURSOR_RIGHT 0x00
+#define CURSOR_UP 0x01
+#define CURSOR_DOWN 0x02
+
+#define CURSOR_EMPTY 0x03
+#define CURSOR_FILL 0x04
+
+extern LiquidCrystal_I2C lcd; 
 void todoDevice(byte selectedMenuItem);
-void loadDevice(byte selectedMenuItem) ;
+void loadDevice(byte selectedMenuItem);
+void displayMenu(const Menu_t &menu);
+Button_t readPushButton(void);
 
 /* Menu principal */
 static const char* MAIN_MENU_ITEMS[] = {"Servo",  
@@ -39,4 +51,6 @@ static Menu_t TODO_MENU = {
   EMPTY_LIMITS,
   &todoDevice
 };
+
+
 

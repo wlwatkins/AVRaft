@@ -15,3 +15,10 @@ typedef struct {
   void (*callbackFnct)(uint8_t menuItemSelected); // Pointeur sur fonction pour gérer le choix de l'utilisateur
 } Menu_t;
 
+/* Listes des touches de la shield lcd DFrobots */
+typedef enum {
+  BP_NONE,   // Aucun bouton appuyé
+  BP_DOWN,     // Bouton bas
+  BP_SELECT, // Bouton SELECT
+  BP_UP,     // Bouton haut
+} Button_t;
