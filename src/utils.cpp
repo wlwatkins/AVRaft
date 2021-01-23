@@ -30,6 +30,10 @@ void loadDevice(byte selectedMenuItem) {
             humidityDevice(255) ;
         case 4:
             onoffDevice(255) ;
+        case 5:
+            dhtxxDevice(255) ;
+        case 6:
+            analogDevice(255) ;
         default:
             displayMenu(TODO_MENU);
     }

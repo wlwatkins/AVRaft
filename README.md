@@ -14,13 +14,12 @@ The project is still in alpha and changes will acquire quite rapidly. The projec
   - Ultrasonic 
   - Humidity
   - On/Off
+  - DHT XX
+  - Analog
 
 Future integrations:
   - DC (H-bridge?)
-  - Relay
-  - Potentiometer
   - Button
-  - LED
 
 ## 3D build and parts list
 
@@ -58,6 +57,8 @@ To compile the code from source, you will need [platformio](https://platformio.o
 | Servo | 1.1.6 | Michael Margolis
 | Stepper | 1.1.3 | Arduino
 | NewPing | 1.9.1 | Tim Eckel
+| DHT sensor library | 1.3.10 | Adafruit
+| Adafruit Unified Sensor | 1.1.4 | Adafruit
 
 
 You can then grab the project 
@@ -133,6 +134,31 @@ Pins:
 | RUN | - | Start.
 
 note: This is a simple on/off switch which can be used to test LEDs, or relays, etc...
+
+* ### DHTXX (humidity and temperature sensor e.g. DHT22)
+Pins: 
+- IN1: D2
+
+| NAME | DEFAULT | DESCRIPTION |
+| ------ | ------ | ------ |
+| Type | 3 | Set what type of sensor you want to use (DHT11: 1 - DHT21: 2 - DHT22: 3).
+| MEASURE | - | Start.
+
+note: This will loop and print about once a second the temperature value in celsius and humidity in percent.
+
+
+* ### Analog
+Pins: 
+- IN1: A0
+
+| NAME | DEFAULT | DESCRIPTION |
+| ------ | ------ | ------ |
+| Max | 1015 | Sets the maximum value the actuator can reach
+| Min | 20 | Set the minimum value the actuator can reach
+| Inv | 0 | Inverse which is the max and min to calculate the percentage (in some case min is 100% (1) other cases it is max (0))
+| Measure | - | Start.
+
+note: This was tested with a photoresistor but it should work with any analog device (even the humidity sensor I guess...)
 
 
 ### Todos

@@ -1,15 +1,21 @@
 #include "Arduino.h"
+#include <Adafruit_Sensor.h>
+#include <DHT.h>
+#include <DHT_U.h>
 #include <LiquidCrystal_I2C.h>
 #include "structs.h"
 #include "main.h"
 #include "utils.h"
 #include "devices.h"
 
-void humidityDevice(byte selectedMenuItem) {
+
+
+
+void dhtxxDevice(byte selectedMenuItem) {
     Button_t buttonPressed;      // Contient le bouton appuyé
     bool scroll = false;
 
-    Menu_t MENU = HUMIDITY_MENU;
+    Menu_t MENU = DHTXX_MENU;
 
  
     if (selectedMenuItem == 0){
@@ -84,44 +90,96 @@ void humidityDevice(byte selectedMenuItem) {
         lcd.setCursor(1, 0);
         lcd.print("CANCEL ANY KEY");
 
+        int DHTTYPE;
 
-        int soilMoistureValue;
-        int oldSoilMoistureValue = 0;
-        int soilmoisturepercent;
+
+        switch (MENU.params[0]) {
+            case 1:
+                DHTTYPE = 11;   // DHT 11
+            case 2:
+                DHTTYPE = 21;  // DHT 21 (AM2301)
+            case 3:
+                DHTTYPE = 22;  // DHT 22 (AM2302)
+        }
+
+        String error = "";
+        unsigned long previousMillis = 0;
+
+        DHT_Unified dht(2, DHTTYPE);
+
+        uint32_t delayMS;
+
+        dht.begin();
+
+        sensor_t sensor;
+        
+        dht.humidity().getSensor(&sensor);
+
+        // Set delay between sensor readings based on sensor details.
+        delayMS = sensor.min_delay / 1000;
+
+
+        int oldTemp;
+        int newTemp;
+        int oldHum;
+        int newHum;
 
         while ((buttonPressed = readPushButton()) == BP_NONE){
-            soilMoistureValue = analogRead(A0);  //put Sensor insert into soil
-            soilmoisturepercent = map(soilMoistureValue, MENU.params[0], MENU.params[1], 0, 100);
 
-            if (oldSoilMoistureValue != soilMoistureValue){
-                oldSoilMoistureValue = soilMoistureValue;
+            unsigned long currentMillis = millis();
+            unsigned long delta = currentMillis - previousMillis;
+
+            if (delta >= delayMS && delayMS > 0) {
+                // save the last time you blinked the LED
+                previousMillis = currentMillis;
+
+                sensors_event_t event;
+                dht.temperature().getEvent(&event);
+                if (isnan(event.temperature)) {
+                    error = "Error temp.";
+                }
+                else {
+                    newTemp = event.temperature;
+                    error = "";
+                }
+                // Get humidity event and print its value.
+                dht.humidity().getEvent(&event);
+                if (isnan(event.relative_humidity)) {
+                    error = "Error hum.";
+                }
+                else {
+                    newHum = event.relative_humidity;
+                    error = "";
+                }
+
+
+            }
+
+            if (error != "") {
                 lcd.setCursor(0, 1);
-                lcd.print("V:               ");
-                lcd.setCursor(3, 1);
-                lcd.print(soilMoistureValue);
-
-                if(soilmoisturepercent > 100) {
-                    soilmoisturepercent = 100;
-                }
-                else if(soilmoisturepercent <0){
-                    soilmoisturepercent = 0;
-                }
-
-                lcd.setCursor(7, 1);
-                lcd.print("<=> ");
-                lcd.print(soilmoisturepercent);
+                lcd.print("                ");
+                lcd.setCursor(0, 1);
+                lcd.print(error);
+            }
+            else if (oldTemp != newTemp || oldHum != newHum ) {
+                oldTemp = newTemp;
+                oldHum = newHum;
+                lcd.setCursor(0, 1);
+                lcd.print("                ");
+                lcd.setCursor(0, 1);
+                lcd.print("T: ");
+                lcd.print(newTemp);
+                lcd.print("C  H: ");
+                lcd.print(newHum);
                 lcd.print("%");
             }
-            delay(100);
 
-             
-           
+
         }
 
         digitalWrite(LED_BUILTIN, LOW);
-        
     }
 
-
+    
 }
 
